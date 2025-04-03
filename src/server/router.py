@@ -12,7 +12,7 @@ class RequestInput(BaseModel):
 
 @router.post("/")
 async def handle_request(request: RequestInput):
-    with SpanManager("blaxel-langchain-deepresearch").create_active_span("agent-request", {}):
+    with SpanManager("blaxel-llama-index").create_active_span("agent-request", {}):
         return StreamingResponse(
             agent(request.inputs),
             media_type='text/event-stream'
